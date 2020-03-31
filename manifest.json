@@ -1,0 +1,20 @@
+{
+    "name": "COVID19",
+    "short_name": "COVID19",
+    "description": "COVID19",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "theme_color": "#91bd3a",
+    "background_color": "#91bd3a",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },{
+            "src": "icon.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ]
+}   

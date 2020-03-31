@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID19</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00897B"/>
+
+    <style type="text/css">
+      .full-list p {
+    display: none;
+    }
+    </style>
+</head>
+<body>
+    
+  <nav class="navbar navtop">
+    <span class="navbar-brand toph1">COVID19</span>
+  </nav>
+
+<div id="content">
+  <div class="container" id="body-content">
+
+  </div>
+  <!-- <div class="full-list">
+    <p>Item 01</p>
+    <p>Item 02</p>
+    <p>Item 03</p>
+    <p>Item 04</p>
+    <p>Item 05</p>
+    <p>Item 06</p>
+    <p>Item 07</p>
+    <p>Item 08</p>
+    <p>Item 09</p>
+    <p>Item 10</p>
+    <p>Item 11</p>
+    <p>Item 12</p>
+    <p>Item 13</p>
+    <p>Item 14</p>
+    <p>Item 15</p>
+    <p>Item 01</p>
+    <p>Item 02</p>
+    <p>Item 03</p>
+    <p>Item 04</p>
+    <p>Item 05</p>
+    <p>Item 06</p>
+    <p>Item 07</p>
+    <p>Item 08</p>
+    <p>Item 09</p>
+    <p>Item 10</p>
+    <p>Item 11</p>
+    <p>Item 12</p>
+    <p>Item 13</p>
+    <p>Item 14</p>
+    <p>Item 15</p>
+
+    <a id="loadmore" class="view-more-btn" href="#">View More</a>
+  </div> -->
+
+  <nav class="nav">
+
+  </nav>
+</div>
+<script src="js/nav.js"></script>
+<script src="js/jquery.js"></script>
+<!-- <script src="js/scroll.js"></script> -->
+<script src="js/api.js"></script>
+<script>
+    // REGISTER SERVICE WORKER
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js')
+        .then(function() {
+          console.log('Pendaftaran ServiceWorker berhasil');
+        })
+        .catch(function(){
+          console.log('Pendaftaran ServiceWorker gagal');
+        });
+      })
+    } else {
+      console.log("ServiceWorker belum didukung browser ini.")
+    }
+    </script>
+</body>
+</html>

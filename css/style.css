@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+
+body {
+    margin: 0 0 55px 0;
+    background-color:#000A12;
+    background: #000A12;
+    font-family: 'Roboto', sans-serif;
+}
+html{
+    background-color:#000A12;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+#content{
+    position: fixed;
+    top: 60px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    overflow:auto;
+    font-family: 'Roboto', sans-serif;
+}
+.container{
+    background-color:#000A12;
+    color: #ffffff;
+}
+.navbar{
+    background-color: #182025;
+    text-align: center; 
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.toph1 {
+    color: #ffffff;
+    text-align: center;
+}
+
+.nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #182025;
+    display: flex;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: #444444;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.nav__link:active {
+    background-color: #444444;
+    text-decoration: none;
+}
+.nav__link:hover{
+    color: #eeeeee;
+    text-decoration: none;
+}
+
+.nav__link--active {
+    color: #ffffff;
+}
+
+.nav__icon {
+    /* margin-top: -8px;
+    margin-bottom: 8px; */
+    font-size: 18px;
+    pointer-events: none;
+}
+.nav__text{
+    /* margin-top: -43px; */
+    pointer-events: none;
+}
+
+.card-body{
+    background-color: #263238;
+}
+
+.card{
+    border: none !important;
+    margin-top: 10px;
+}
+#loadmore a{
+    margin-bottom: 50%;
+}
+
+#card-global{
+    border: 1px solid !important;
+    border-color: #263238 !important;
+    border-radius: 5px;
+}
+
+#card-body-gb{
+    border-radius: 5px;
+    background-color: #000A12;
+}
+#gb-tl-1{
+    font-size: 45px;
+}
+#gb-tl-n1{
+    font-size: 30px;
+}
+#gb-tl-2{
+    font-size: 15px;
+}
+#gb-tl-n2{
+    font-size: 14px;
+}
+
+
+#icon-ina{
+    font-size: 12px;
+}
+
+#icon-ina-card{
+    font-size: 8px;
+}
+
+#float-card div{
+    float: left; 
+    margin-right: 10px;
+}
+
+#txt-ina{
+    font-size: 10px;
+}
+
+#ina-box{
+    font-size:14px;
+    margin-right: 10px;
+    justify-content: center;
+}
