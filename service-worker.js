@@ -1,20 +1,24 @@
 const CACHE_NAME = "covid19";
 var urlsToCache = [
   "/",
-  "/navbottom.html",
+  "/nav.html",
   "/index.html",
   "/pages/global.html",
   "/pages/nasional.html",
   "/pages/doa.html",
   "/pages/about.html",
+  "/pages/maps.html",
   "/css/style.css",
   "/css/bootstrap.min.css",
   "/js/nav.js",
   "/js/api.js",
   "/js/jquery.js",
   "/js/scroll.js",
-  "/js/cv19live.js"
+  "/js/cv19live.js",
+  "/js/dateformat.js",
+  "/js/maps.js"
 ];
+ 
  
 self.addEventListener("install", function(event) {
   event.waitUntil(
@@ -58,3 +62,42 @@ self.addEventListener("fetch", function(event) {
 		})
 	);
 })
+
+self.addEventListener("fetch", function(event) {
+  var base_url = "https://api.kawalcorona.com/";
+  if (event.request.url.indexOf(base_url) > -1) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(function(cache) {
+        return fetch(event.request).then(function(response) {
+          cache.put(event.request.url, response.clone());
+          return response;
+        })
+      })
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request, { ignoreSearch: true }).then(function(response) {
+        return response || fetch (event.request);
+    })
+    )
+  }
+});
+self.addEventListener("fetch", function(event) {
+  var base_url = "https://api.kawalcorona.com/indonesia/";
+  if (event.request.url.indexOf(base_url) > -1) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(function(cache) {
+        return fetch(event.request).then(function(response) {
+          cache.put(event.request.url, response.clone());
+          return response;
+        })
+      })
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request, { ignoreSearch: true }).then(function(response) {
+        return response || fetch (event.request);
+    })
+    )
+  }
+});

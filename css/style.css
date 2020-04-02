@@ -13,8 +13,8 @@ html{
 }
 #content{
     position: fixed;
-    top: 60px;
-    bottom: 60px;
+    top: 55px;
+    bottom: 55px;
     left: 0;
     right: 0;
     overflow:auto;

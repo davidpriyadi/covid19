@@ -2,7 +2,7 @@ $(".full-list p")
 .slice(0, 2)
 .show();
 $(".full-list p:hidden").css("opacity", 0);
-$("#loadmore").on("click", function(e) {
+$(".loadmore").on("click", function(e) {
 $(".full-list p:hidden") // Added :hidden
   .slice(0, 5)
   .slideDown("slow")
@@ -26,9 +26,9 @@ $('#content').animate({
 e.preventDefault();
 });
 
-if (! window.jQuery) {
- alert('No internet Connection !!');
-  }
- else {
-  alert('ada');
- }
+// if (! window.jQuery) {
+//  alert('No internet Connection !!');
+//   }
+//  else {
+//   alert('ada');
+//  }

@@ -4,71 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID19</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#00897B"/>
 
     <style type="text/css">
-      .full-list p {
-    display: none;
-    }
+      .full-list p{
+      display: none;
+      }
     </style>
 </head>
 <body>
-    
+  
+  <!-- Navbat Top -->
   <nav class="navbar navtop">
-    <span class="navbar-brand toph1">COVID19</span>
+        <span class="navbar-brand toph1">COVID19</span>
   </nav>
+  <!-- end navbar top -->
+  
+  <!-- margin content -->
+  <div id="content">
+    <!-- content -->
+    <div id="content-body">
 
-<div id="content">
-  <div class="container" id="body-content">
-
+    </div>
+    <!-- end content -->
   </div>
-  <!-- <div class="full-list">
-    <p>Item 01</p>
-    <p>Item 02</p>
-    <p>Item 03</p>
-    <p>Item 04</p>
-    <p>Item 05</p>
-    <p>Item 06</p>
-    <p>Item 07</p>
-    <p>Item 08</p>
-    <p>Item 09</p>
-    <p>Item 10</p>
-    <p>Item 11</p>
-    <p>Item 12</p>
-    <p>Item 13</p>
-    <p>Item 14</p>
-    <p>Item 15</p>
-    <p>Item 01</p>
-    <p>Item 02</p>
-    <p>Item 03</p>
-    <p>Item 04</p>
-    <p>Item 05</p>
-    <p>Item 06</p>
-    <p>Item 07</p>
-    <p>Item 08</p>
-    <p>Item 09</p>
-    <p>Item 10</p>
-    <p>Item 11</p>
-    <p>Item 12</p>
-    <p>Item 13</p>
-    <p>Item 14</p>
-    <p>Item 15</p>
+  <!-- end margincontent -->
 
-    <a id="loadmore" class="view-more-btn" href="#">View More</a>
-  </div> -->
-
+  <!-- navbottom -->
   <nav class="nav">
 
   </nav>
-</div>
+  <!-- end navbottom -->
+
+
+<!-- javascipt & Jquery & js file -->
 <script src="js/nav.js"></script>
 <script src="js/jquery.js"></script>
 <!-- <script src="js/scroll.js"></script> -->
 <script src="js/api.js"></script>
+<script src="js/maps.js"></script>
+<script src="js/dateformat.js"></script>
 <script>
     // REGISTER SERVICE WORKER
     if ('serviceWorker' in navigator) {
@@ -84,6 +66,6 @@
     } else {
       console.log("ServiceWorker belum didukung browser ini.")
     }
-    </script>
+</script>
 </body>
 </html>
