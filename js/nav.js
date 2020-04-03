@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// active link =======================
+//===================================== active link =======================
 function active(page) {
   if (page == "about") {
     document.getElementById(page).className ="nav__link nav__link--active";

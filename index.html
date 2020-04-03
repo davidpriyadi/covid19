@@ -31,7 +31,9 @@
   <div id="content">
     <!-- content -->
     <div id="content-body">
-
+        <div class="spinner-border text-primary text-center" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
     </div>
     <!-- end content -->
   </div>
@@ -47,25 +49,27 @@
 <!-- javascipt & Jquery & js file -->
 <script src="js/nav.js"></script>
 <script src="js/jquery.js"></script>
+<script src="js/dateformat.js"></script>
 <!-- <script src="js/scroll.js"></script> -->
 <script src="js/api.js"></script>
 <script src="js/maps.js"></script>
-<script src="js/dateformat.js"></script>
+<script src="js/cv19live.js"></script>
+
 <script>
-    // REGISTER SERVICE WORKER
-    if ('serviceWorker' in navigator) {
+  // REGISTER SERVICE WORKER
+  if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/service-worker.js')
-        .then(function() {
-          console.log('Pendaftaran ServiceWorker berhasil');
-        })
-        .catch(function(){
-          console.log('Pendaftaran ServiceWorker gagal');
-        });
+          navigator.serviceWorker.register('/service-worker.js')
+          .then(function() {
+              console.log('Pendaftaran ServiceWorker berhasil');
+          })
+          .catch(function(){
+              console.log('Pendaftaran ServiceWorker gagal');
+          });
       })
-    } else {
+  } else {
       console.log("ServiceWorker belum didukung browser ini.")
-    }
-</script>
+  }    
+  </script>
 </body>
 </html>

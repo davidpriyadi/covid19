@@ -2,9 +2,7 @@ const global = "https://api.kawalcorona.com/";
 const gbpositif = "https://api.kawalcorona.com/positif/";
 const gbsembuh = "https://api.kawalcorona.com/sembuh/";
 const gbmeninggal = "https://api.kawalcorona.com/meninggal/";
-var base_url = "https://readerapi.codepolitan.com/articles";
 var prov_ina = "https://api.kawalcorona.com/indonesia/provinsi/";
-var ina = "https://api.kawalcorona.com/indonesia/";
 var chart = "https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/Statistik_Perkembangan_COVID19_Indonesia/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json";
 var maps ="https://opendata.arcgis.com/datasets/0c0f4558f1e548b68a1c82112744bad3_0.geojson";
 function status(response) {
@@ -28,7 +26,9 @@ function error(error) {
 }
 
 
+// =============================== GLOBAL COVID API =============================================
 function covid() {
+  return new Promise(function (resolve, reject) {
     if ("caches" in window) {
         caches.match(global).then(function(response) {
           if (response) {
@@ -38,35 +38,34 @@ function covid() {
                 data.forEach(function (params) {
                   viewHtml +=
                   `                
-                  <div class="card rounded-lg">
+                  <div class="card rounded-lg ">
                   <div class="card-body rounded-sm">
-                    <div id="float-card">
-                      <div>
-                        <h6>${no++}.</h6>
-                      </div>
-                      <div>
-                        <h6>${params.attributes.Country_Region}</h6>
-                      </div>
-                      <div class="">
-                        <span id="ina-box text-danger">
-                          <i class="material-icons text-danger" id="icon-ina">highlight_off</i>
-                          <span id="txt-ina">${params.attributes.Deaths}</span>
-                        </span>
-                        <span id="ina-box text-warning">
-                          <i class="material-icons text-warning" id="icon-ina">check_circle_outline</i>
-                          <span id="txt-ina">${params.attributes.Confirmed}</span>
-                        </span>
-                        <span id="ina-box text-success">
-                        <i class="material-icons text-success" id="icon-ina">add_circle_outline</i>
-                        <span id="txt-ina">${params.attributes.Recovered}</span>
-                        </span>
-                      </div>
-                    </div>
+                    <ul class="list-unstyled">
+                        <li class="media">
+                          <h2>${no++}</h2>
+                          <div class="media-body">
+                            <h5 class="mt-0 mb-1">${params.attributes.Country_Region}</h5>
+                            <span id="ina-box text-danger">
+                                <i class="material-icons text-danger" id="icon-ina">highlight_off</i>
+                                <span id="txt-ina">${params.attributes.Deaths}</span>
+                              </span>
+                              <span id="ina-box text-warning">
+                                <i class="material-icons text-warning" id="icon-ina">check_circle_outline</i>
+                                <span id="txt-ina">${params.attributes.Confirmed}</span>
+                              </span>
+                              <span id="ina-box text-success">
+                              <i class="material-icons text-success" id="icon-ina">add_circle_outline</i>
+                              <span id="txt-ina">${params.attributes.Recovered}</span>
+                              </span>
+                          </div>
+                        </li>
+                    </ul>
                   </div>
               </div>
                   `;
                   console.log(params.attributes.Country_Region);
                 });
+                resolve(data);
                 document.getElementById("menu3").innerHTML = viewHtml; 
               });
             }
@@ -81,40 +80,44 @@ function covid() {
         data.forEach(function (params) {
           viewHtml +=
           `                
-          <div class="card rounded-lg">
-          <div class="card-body rounded-sm">
-            <div id="float-card">
-              <div>
-                <h6>${no++}.</h6>
-              </div>
-              <div>
-                <h6>${params.attributes.Country_Region}</h6>
-              </div>
-              <div class="">
-                <span id="ina-box text-danger">
-                  <i class="material-icons text-danger" id="icon-ina">highlight_off</i>
-                  <span id="txt-ina">${params.attributes.Deaths}</span>
-                </span>
-                <span id="ina-box text-warning">
-                  <i class="material-icons text-warning" id="icon-ina">check_circle_outline</i>
-                  <span id="txt-ina">${params.attributes.Confirmed}</span>
-                </span>
-                <span id="ina-box text-success">
-                <i class="material-icons text-success" id="icon-ina">add_circle_outline</i>
-                <span id="txt-ina">${params.attributes.Recovered}</span>
-                </span>
-              </div>
-            </div>
+          <div class="card rounded-lg ">
+          <div class="card-body rounded-sm mb-0">
+            <ul class="list-unstyled mb-0">
+                <li class="media mb-0">
+                  <h3 class="align-self-center">${no++}</h3> 
+                  <div class="media-body mb-0" style="margin-left:10px">
+                    <h6 class="mt-0 mb-1">${params.attributes.Country_Region}</h6>
+                    <span id="ina-box text-danger">
+                        <i class="material-icons text-danger" id="icon-ina">highlight_off</i>
+                        <span id="txt-ina">${params.attributes.Deaths}</span>
+                      </span>
+                      <span id="ina-box text-warning">
+                        <i class="material-icons text-warning" id="icon-ina">check_circle_outline</i>
+                        <span id="txt-ina">${params.attributes.Confirmed}</span>
+                      </span>
+                      <span id="ina-box text-success">
+                      <i class="material-icons text-success" id="icon-ina">add_circle_outline</i>
+                      <span id="txt-ina">${params.attributes.Recovered}</span>
+                      </span>
+                  </div>
+                </li>
+            </ul>
           </div>
       </div>
           `;
 
         });
+        resolve(data);
         document.getElementById("menu3").innerHTML = viewHtml; 
-      });
+      })
+      .catch(error);
+  });
   }
 
+// =============================== END GLOBAL COVID API =============================================
+
   function prov() {
+    return new Promise(function (resolve, reject) {
     if ("caches" in window) {
         caches.match(prov_ina).then(function(response) {
           if (response) {
@@ -125,34 +128,33 @@ function covid() {
                     console.log(params);
                 viewHtml +=
                 `                
-                <div class="card rounded-lg">
-                <div class="card-body rounded-sm">
-                  <div id="float-card">
-                    <div>
-                      <h6>${no++}.</h6>
-                    </div>
-                    <div>
-                      <h6>${params.attributes.Provinsi}</h6>
-                    </div>
-                    <div class="">
-                      <span id="ina-box text-danger">
-                        <i class="material-icons text-danger" id="icon-ina">highlight_off</i>
-                        <span id="txt-ina">${params.attributes.Kasus_Meni}</span>
-                      </span>
-                      <span id="ina-box text-warning">
-                        <i class="material-icons text-warning" id="icon-ina">check_circle_outline</i>
-                        <span id="txt-ina">${params.attributes.Kasus_Posi}</span>
-                      </span>
-                      <span id="ina-box text-success">
-                      <i class="material-icons text-success" id="icon-ina">add_circle_outline</i>
-                      <span id="txt-ina">${params.attributes.Kasus_Semb}</span>
-                      </span>
-                    </div>
-                  </div>
+                <div class="card rounded-lg ">
+                <div class="card-body rounded-sm mb-0">
+                  <ul class="list-unstyled mb-0">
+                      <li class="media mb-0">
+                        <h3 class="align-self-center">${no++}</h3> 
+                        <div class="media-body mb-0" style="margin-left:10px">
+                          <h6 class="mt-0 mb-1">${params.attributes.Provinsi}</h6>
+                          <span id="ina-box text-danger">
+                              <i class="material-icons text-danger" id="icon-ina">highlight_off</i>
+                              <span id="txt-ina">${params.attributes.Kasus_Meni}</span>
+                            </span>
+                            <span id="ina-box text-warning">
+                              <i class="material-icons text-warning" id="icon-ina">check_circle_outline</i>
+                              <span id="txt-ina">${params.attributes.Kasus_Posi}</span>
+                            </span>
+                            <span id="ina-box text-success">
+                            <i class="material-icons text-success" id="icon-ina">add_circle_outline</i>
+                            <span id="txt-ina">${params.attributes.Kasus_Semb}</span>
+                            </span>
+                        </div>
+                      </li>
+                  </ul>
                 </div>
             </div>
                 `;
                 });
+                resolve(data);
                 document.getElementById("menu2").innerHTML = viewHtml; 
               });
             }
@@ -168,39 +170,39 @@ function covid() {
             console.log(params);
             viewHtml +=
             `                
-            <div class="card rounded-lg">
-            <div class="card-body rounded-sm">
-              <div id="float-card">
-                <div>
-                  <h6>${no++}.</h6>
-                </div>
-                <div>
-                  <h6>${params.attributes.Provinsi}</h6>
-                </div>
-                <div class="">
-                <span id="ina-box text-danger">
-                  <i class="material-icons text-danger" id="icon-ina">highlight_off</i>
-                  <span id="txt-ina">${params.attributes.Kasus_Meni}</span>
-                </span>
-                <span id="ina-box text-warning">
-                  <i class="material-icons text-warning" id="icon-ina">check_circle_outline</i>
-                  <span id="txt-ina">${params.attributes.Kasus_Posi}</span>
-                </span>
-                <span id="ina-box text-success">
-                <i class="material-icons text-success" id="icon-ina">add_circle_outline</i>
-                  <span id="txt-ina">${params.attributes.Kasus_Semb}</span>
-                </span>
-              </div>
-              </div>
+            <div class="card rounded-lg ">
+            <div class="card-body rounded-sm mb-0">
+              <ul class="list-unstyled mb-0">
+                  <li class="media mb-0">
+                    <h3 class="align-self-center">${no++}</h3> 
+                    <div class="media-body mb-0" style="margin-left:10px">
+                      <h6 class="mt-0 mb-1">${params.attributes.Provinsi}</h6>
+                      <span id="ina-box text-danger">
+                          <i class="material-icons text-danger" id="icon-ina">highlight_off</i>
+                          <span id="txt-ina">${params.attributes.Kasus_Meni}</span>
+                        </span>
+                        <span id="ina-box text-warning">
+                          <i class="material-icons text-warning" id="icon-ina">check_circle_outline</i>
+                          <span id="txt-ina">${params.attributes.Kasus_Posi}</span>
+                        </span>
+                        <span id="ina-box text-success">
+                        <i class="material-icons text-success" id="icon-ina">add_circle_outline</i>
+                        <span id="txt-ina">${params.attributes.Kasus_Semb}</span>
+                        </span>
+                    </div>
+                  </li>
+              </ul>
             </div>
         </div>
-            `;
+            `; 
         });
         document.getElementById("menu2").innerHTML = viewHtml; 
-      });
+      }).catch(error);
+    });
   }
 
   function globalliveCv19() {
+    return new Promise(function (resolve, reject) {
     if ("caches" in window) {
       caches.match(gbpositif).then(function(response) {
         if (response) {
@@ -217,6 +219,8 @@ function covid() {
                     </div>
                 </div>
               `;
+
+              resolve(data);
               document.getElementById("gb-po").innerHTML = viewHtml;
             }); 
           }
@@ -238,9 +242,10 @@ function covid() {
             </div>
         </div>
       `;
+      resolve(data);
       document.getElementById("gb-po").innerHTML = viewHtml;
       console.log(data);
-    });
+    }).catch(error);
 
     if ("caches" in window) {
       caches.match(gbsembuh).then(function(response) {
@@ -253,6 +258,7 @@ function covid() {
               viewHtml =`
               <div id="gb-tl-n1" class="value-sm">${data.value}</div>
               `;
+              resolve(data);
               document.getElementById("value-sm").innerHTML = viewHtml;
             });
           }
@@ -269,8 +275,9 @@ function covid() {
       viewHtml =`
       <div id="gb-tl-n1" class="value-sm">${data.value}</div>
       `;
+      resolve(data);
       document.getElementById("value-sm").innerHTML = viewHtml;
-    });
+    }).catch(error);
 
     if ("caches" in window) {
       caches.match(gbmeninggal).then(function(response) {
@@ -283,10 +290,11 @@ function covid() {
               viewHtml =`
               <div id="gb-tl-n1" class="value-sm">${data.value}</div>
               `;
+              resolve(data);
               document.getElementById("value-mn").innerHTML = viewHtml;
             });
           }
-      });
+      })
     }
   fetch(gbmeninggal)
     .then(status)
@@ -300,14 +308,17 @@ function covid() {
       viewHtml =`
       <div id="gb-tl-n1" class="value-sm">${data.value}</div>
       `;
+      resolve(data);
       document.getElementById("value-mn").innerHTML = viewHtml;
-    });
+    }).catch(error);
+  })
   }
 
-  // covid live data indonesia
+  // ======================= covid live data indonesia ===========================
   function covid_ina() {
+    return new Promise(function (resolve, reject) {
     if ("caches" in window) {
-        caches.match(ina).then(function(response) {
+        caches.match(global + "indonesia/").then(function(response) {
           if (response) {
               response.json().then(function (data) {
                 var liveDataCV19 =""
@@ -344,12 +355,13 @@ function covid() {
                           </div>
                               `;
                 });
+                resolve(data);
                 document.getElementById("menu-ina").innerHTML = liveDataCV19;
               });
             }
         });
       }
-    fetch(ina)
+    fetch(global +"indonesia/")
       .then(status)
       .then(json)
       .then(function(data) {
@@ -387,13 +399,14 @@ function covid() {
             </div>
                 `;
         });
+        resolve(data);
         document.getElementById("menu-ina").innerHTML = liveDataCV19;
-      });
+      }).catch(error);
+    });
   }
 
-//==========================Percobaan ============================
 
-
+// =============================== MAPS API =============================================
 function offline() {
   return new Promise(function (resolve, reject) {
     if ('caches' in window) {
@@ -426,6 +439,9 @@ function offline() {
   });
 }
 
+// =============================== END MAPS API =============================================
+
+// =============================== CHART LINE API =============================================
 function chartCovid() {
   return new Promise(function (resolve, reject) {
     if ('caches' in window) {
@@ -435,7 +451,8 @@ function chartCovid() {
             // data.features.forEach(function (params) {
             //   console.log(params.attributes.Hari_ke);
             // });
-            chart19(data);
+            // chart19(data);
+            chartPerhari(data);
             resolve(data);
           });
         }
@@ -450,88 +467,20 @@ function chartCovid() {
         //   console.log(params.attributes.Hari_ke);
         // });
         // // console.log(data.attributes);
-        chart19(data);
+        // chart19(data);
+        chartPerhari(data);
         resolve(data);
       })
       .catch(error);
   });
 }
 
-function chart19(data) {
-  var dataLebel = [];
-  var dataSet = [];
-  var sembuh = [];
-  var meninggal = [];
-  data.features.forEach(function (params) {
-    if (params.attributes.Jumlah_Kasus_Kumulatif != null) {
 
-      // convert date json
-      var jsonDate = "\/Date("+params.attributes.Tanggal+")\/";
-      var date = new Date(parseInt(jsonDate.substr(6)));
-      var tgl = date.format("dd mmm");
-
-      dataLebel.push(tgl);
-      sembuh.push(params.attributes.Jumlah_Pasien_Sembuh);  
-      dataSet.push(params.attributes.Jumlah_Kasus_Kumulatif);  
-      meninggal.push(params.attributes.Jumlah_Pasien_Meninggal);   
-    }
-  })
+// =============================== END CHART LINE API =============================================
 
 
-  let myChart = document.getElementById('myChart').getContext('2d');
 
-  // Global Options
-
-  let massPopChart = new Chart(myChart, {
-    type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-    data:{
-      labels:dataLebel,
-      datasets:[{
-        label:'Terkonfirmasi',
-        data:dataSet,
-        borderColor: "#3e95cd",
-        fill: false
-      },{
-        label:'Sembuh',
-        data:sembuh,
-        borderColor: "#8e5ea2",
-        fill: false
-      },{
-        label:'Meninggal',
-        data:meninggal,
-        borderColor: "#3cba9f",
-        fill: false
-      }]
-    },
-    options:{
-      title:{
-        display:true,
-        text:'Grafik Perkembangan Covid Indonesia',
-        fontSize:25
-      },
-      legend:{
-        display:true,
-        position:'right',
-        labels:{
-          fontColor:'#FFFF'
-        }
-      },
-      layout:{
-        padding:{
-          left:50,
-          right:0,
-          bottom:0,
-          top:0
-        }
-      },
-      tooltips:{
-        enabled:true
-      }
-    }
-  });
-}
-
-//=====================================Maps========================
+//===================================== Maps ========================
 function maps_covid(data) {
   var mymap = L.map('mapid').setView([-2.46, 117.86], 4);
 
@@ -561,3 +510,5 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 // });
 }
+
+//=================================== maps end =========================
