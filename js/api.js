@@ -5,6 +5,9 @@ const gbmeninggal = "https://api.kawalcorona.com/meninggal/";
 var prov_ina = "https://api.kawalcorona.com/indonesia/provinsi/";
 var chart = "https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/Statistik_Perkembangan_COVID19_Indonesia/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json";
 var maps ="https://opendata.arcgis.com/datasets/0c0f4558f1e548b68a1c82112744bad3_0.geojson";
+var news = "http://newsapi.org/v2/top-headlines?country=id&category=health&apiKey=46ecb833db2f4b9584a1dc370a8986a7";
+
+
 function status(response) {
   if (response.status !== 200) {
     console.log("Error : " + response.status);
@@ -38,7 +41,7 @@ function covid() {
                 data.forEach(function (params) {
                   viewHtml +=
                   `                
-                  <div class="card rounded-lg ">
+                  <div class="card rounded-lg" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
                   <div class="card-body rounded-sm">
                     <ul class="list-unstyled">
                         <li class="media">
@@ -80,7 +83,7 @@ function covid() {
         data.forEach(function (params) {
           viewHtml +=
           `                
-          <div class="card rounded-lg ">
+          <div class="card rounded-lg " uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
           <div class="card-body rounded-sm mb-0">
             <ul class="list-unstyled mb-0">
                 <li class="media mb-0">
@@ -128,7 +131,7 @@ function covid() {
                     console.log(params);
                 viewHtml +=
                 `                
-                <div class="card rounded-lg ">
+                <div class="card rounded-lg " uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
                 <div class="card-body rounded-sm mb-0">
                   <ul class="list-unstyled mb-0">
                       <li class="media mb-0">
@@ -170,11 +173,11 @@ function covid() {
             console.log(params);
             viewHtml +=
             `                
-            <div class="card rounded-lg ">
+            <div class="card rounded-lg" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
             <div class="card-body rounded-sm mb-0">
               <ul class="list-unstyled mb-0">
                   <li class="media mb-0">
-                    <h3 class="align-self-center">${no++}</h3> 
+                    <h3 class="align-self-center">${no++}</h3>
                     <div class="media-body mb-0" style="margin-left:10px">
                       <h6 class="mt-0 mb-1">${params.attributes.Provinsi}</h6>
                       <span id="ina-box text-danger">
@@ -474,41 +477,51 @@ function chartCovid() {
       .catch(error);
   });
 }
-
-
 // =============================== END CHART LINE API =============================================
 
+// AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo youtube
 
+//================================== API YOUTUBE ===================================================
+const yt = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo&order=date&type=video&maxResults=10&q=edukasi corona&part=snippet";
 
-//===================================== Maps ========================
-function maps_covid(data) {
-  var mymap = L.map('mapid').setView([-2.46, 117.86], 4);
+function ytCorona() {
+  if ('caches' in window) {
+    caches.match(yt).then(function (response) {
+      if (response) {
+        response.json().then(function (data) {
+          console.log(data)
+        });
+      }
+    });
+  }
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  id: 'mapbox/dark-v10',
-}).addTo(mymap);
-
-
-  // $.getJSON("https://opendata.arcgis.com/datasets/0c0f4558f1e548b68a1c82112744bad3_0.geojson",function(data){
-  // add GeoJSON layer to the map once the file is loaded
-  L.geoJSON(data).bindPopup(function (layer) {
-    var content = "<div class='card'>" +
-    "<div class='card-header alert-success text-center p-1'><strong>Provinsi<br>" + layer.feature.properties.Provinsi + "</strong></div>" +
-    "<div class='card-body p-0'>" +
-      "<table class='table table-responsive-sm m-0'>" +
-        "<tr class='text-warning'><th><i class='far fa-sad-tear'></i> Kasus Positif</th><th>" + layer.feature.properties.Kasus_Posi + "</th></tr>" +
-        "<tr class='text-success'><th><i class='far fa-smile'></i> Kasus Sembuh</th><th>" + layer.feature.properties.Kasus_Semb + "</th></tr>" +
-        "<tr class='text-danger'><th><i class='far fa-frown'></i> Kasus Meninggal</th><th>" + layer.feature.properties.Kasus_Meni + "</th></tr>" +
-      "</table>" +
-    "</div>";
-    return content;
-}).addTo(mymap);
-
-// });
+  fetch(yt)
+    .then(status)
+    .then(json)
+    .then(function (data) {
+      console.log(data)
+    })
+    .catch(error);
 }
 
-//=================================== maps end =========================
+function newsApi() {
+  if ('caches' in window) {
+    caches.match(news).then(function (response) {
+      if (response) {
+        response.json().then(function (data) {
+          console.log(data)
+        });
+      }
+    });
+  }
+
+  fetch(news)
+    .then(status)
+    .then(json)
+    .then(function (data) {
+      console.log(data)
+    })
+    .catch(error);
+}
+
+

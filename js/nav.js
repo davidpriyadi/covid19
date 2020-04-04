@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Load page content
   var page = window.location.hash.substr(1);
-  if (page == "") page = "global";
+  if (page == "") page = "home";
   loadPage(page);
 
   function loadPage(page) {
@@ -43,16 +43,16 @@ document.addEventListener("DOMContentLoaded", function() {
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4) {
         var content = document.querySelector("#content-body");
-        if (page === "global") {
+        if (page === "home") {
           covid_ina();
           globalliveCv19();
         } else if (page === "nasional") {
           prov(); 
-          var v = "An" + 0;
-          console.log(v);
-        }else if (page == "doa") {
+        }else if (page == "global") {
           covid();
-        }else if (page == "about") {
+          // ytCorona();
+          // newsApi();
+        }else if (page == "chartnav") {
           console.log("Berhasil");
           chartCovid();
         }else if(page == "maps"){
@@ -77,35 +77,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //===================================== active link =======================
 function active(page) {
-  if (page == "about") {
+  if (page == "chartnav") {
     document.getElementById(page).className ="nav__link nav__link--active";
-    document.getElementById("doa").className ="nav__link";
+    document.getElementById("home").className ="nav__link";
     document.getElementById("global").className ="nav__link ";
     document.getElementById("nasional").className ="nav__link";
     document.getElementById("maps").className ="nav__link";
-  }else if (page == "doa") {
+  }else if (page == "home") {
     document.getElementById(page).className ="nav__link nav__link--active";
-    document.getElementById("about").className ="nav__link";
+    document.getElementById("chartnav").className ="nav__link";
     document.getElementById("global").className ="nav__link";
     document.getElementById("nasional").className ="nav__link";
     document.getElementById("maps").className ="nav__link";
   } else if (page == "nasional") {
     document.getElementById(page).className ="nav__link nav__link--active";
-    document.getElementById("about").className ="nav__link";
+    document.getElementById("home").className ="nav__link";
     document.getElementById("global").className ="nav__link";
-    document.getElementById("doa").className ="nav__link";
+    document.getElementById("chartnav").className ="nav__link";
     document.getElementById("maps").className ="nav__link";
   }else if(page == "maps"){
     document.getElementById(page).className ="nav__link nav__link--active";
-    document.getElementById("about").className ="nav__link";
+    document.getElementById("home").className ="nav__link";
     document.getElementById("nasional").className ="nav__link";
-    document.getElementById("doa").className ="nav__link";
+    document.getElementById("chartnav").className ="nav__link";
     document.getElementById("global").className ="nav__link";
   }else{
     document.getElementById(page).className ="nav__link nav__link--active";
-    document.getElementById("about").className ="nav__link";
+    document.getElementById("chartnav").className ="nav__link";
     document.getElementById("nasional").className ="nav__link";
-    document.getElementById("doa").className ="nav__link";
+    document.getElementById("home").className ="nav__link";
     document.getElementById("maps").className ="nav__link";
   }  
 }

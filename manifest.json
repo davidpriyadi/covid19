@@ -4,15 +4,15 @@
     "description": "COVID19",
     "start_url": "/index.html",
     "display": "standalone",
-    "theme_color": "#91bd3a",
-    "background_color": "#91bd3a",
+    "theme_color": "#182025",
+    "background_color": "#182025",
     "icons": [
         {
-            "src": "icon.png",
+            "src": "/img/load.png",
             "sizes": "512x512",
             "type": "image/png"
         },{
-            "src": "icon.png",
+            "src": "/img/load.png",
             "type": "image/png",
             "sizes": "192x192"
         }

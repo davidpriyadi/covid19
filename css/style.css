@@ -155,3 +155,12 @@ html{
     height: 100%;
 }
 
+.uk-card{
+    background-color: #2E343B;
+}
+
+h3,h6,h5 {
+    color: #ffffff;
+    font-style: normal;
+}
+
