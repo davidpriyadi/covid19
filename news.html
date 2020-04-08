@@ -8,50 +8,29 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#182025"/>
-
-    <style type="text/css">
-      .full-list p{
-      display: none;
-      }
-    </style>
 </head>
 <body>
   
   <!-- Navbat Top -->
-  <nav class="navbar navtop">
-        <span class="navbar-brand toph1">COVID-19</span>
+  <nav class="navbar" id="navbar-index">
+        <span class="navbar-brand toph1"><a href="javascript:goBack()" uk-icon="chevron-left" style="margin-right: 30px;"></a>News</span>
   </nav>
-  <!-- end navbar top -->
-  
-  <!-- margin content -->
-  <div id="content">
-    <!-- content -->
-    <div id="content-body">
 
+  <div class="container mt-2" id="body-content">
+    <div class="col-md-12">
+        <div class="row row-cols-1 row-cols-md-3" id="news-id">
+            
+        </div>
     </div>
-    <!-- end content -->
+  <br>
   </div>
-  <!-- end margincontent -->
-  <!-- navbottom -->
-  <nav class="nav">
-
-  </nav>
-  <!-- end navbottom -->
 
 
 <!-- javascipt & Jquery & js file -->
-<script src="js/nav.js"></script>
 <script src="js/jquery.js"></script>
-<script src="js/dateformat.js"></script>
-<!-- <script src="js/scroll.js"></script> -->
 <script src="js/api.js"></script>
-<script src="js/maps.js"></script>
-<script src="js/chartCovid.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
 
@@ -69,7 +48,15 @@
       })
   } else {
       console.log("ServiceWorker belum didukung browser ini.")
-  }    
+  }
+
+    function goBack() {
+      window.history.back();
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      newsApi();
+    });
   </script>
 </body>
 </html>

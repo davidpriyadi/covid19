@@ -20,7 +20,19 @@ workbox.precaching.precacheAndRoute([{
   revision: '1'
 },
 {
+  url: '/news.html',
+  revision: '1'
+},
+{
   url: '/menu.html',
+  revision: '1'
+},
+{
+  url: '/video.html',
+  revision: '1'
+},
+{
+  url: '/faq.html',
   revision: '1'
 },
 {
@@ -49,10 +61,6 @@ workbox.precaching.precacheAndRoute([{
 },
 {
   url: '/pages/maps.html',
-  revision: '1'
-},
-{
-  url: '/pages/news.html',
   revision: '1'
 },
 {
@@ -173,6 +181,11 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
   new RegExp('https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/Statistik_Perkembangan_COVID19_Indonesia/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json'),
+  workbox.strategies.staleWhileRevalidate()
+)
+
+workbox.routing.registerRoute(
+  new RegExp('https://www.googleapis.com/youtube/v3/search?key=AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo&order=viewCount&type=video&maxResults=10&q=edukasi corona&part=snippet'),
   workbox.strategies.staleWhileRevalidate()
 )
 

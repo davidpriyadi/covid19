@@ -32,7 +32,10 @@ html{
 
 }
 
-
+#navbar-index{
+    text-align: left !important; 
+    justify-content: left;
+}
 .toph1 {
     color: #ffffff;
     text-align: center;
@@ -164,3 +167,8 @@ h3,h6,h5 {
     font-style: normal;
 }
 
+#link-media{
+    text-decoration: none;
+    color: #ffffff;
+    font-style: bold;
+}

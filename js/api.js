@@ -482,14 +482,33 @@ function chartCovid() {
 // AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo youtube
 
 //================================== API YOUTUBE ===================================================
-const yt = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo&order=date&type=video&maxResults=10&q=edukasi corona&part=snippet";
+const yt = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo&order=viewCount&type=video&maxResults=10&q=edukasi corona&part=snippet";
 
 function ytCorona() {
+  return new Promise(function (resolve, reject) {
   if ('caches' in window) {
     caches.match(yt).then(function (response) {
       if (response) {
         response.json().then(function (data) {
-          console.log(data)
+          var viewHtml = ""
+          data.items.forEach(function (params) {
+            viewHtml +=`       
+            <div class="col mb-4">
+              <div class="card">
+                <img src="${params.snippet.thumbnails.high.url}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">${params.snippet.title}</h5>
+                  <p>${params.snippet.channelTitle}</p>
+                  <p class="card-text">${params.snippet.description}</p>
+                  <a href="https://www.youtube.com/watch?v=${params.id.videoId}" class="card-link">Selengkapnya</a>
+                </div>
+              </div>
+            </div>  
+          ` 
+            console.log(params)
+          })
+          resolve(data);
+          document.getElementById("yt-id").innerHTML = viewHtml;
         });
       }
     });
@@ -499,17 +518,57 @@ function ytCorona() {
     .then(status)
     .then(json)
     .then(function (data) {
-      console.log(data)
+      var viewHtml = ""
+      data.items.forEach(function (params) {
+        viewHtml +=`       
+        <div class="col mb-4">
+          <div class="card">
+            <img src="${params.snippet.thumbnails.high.url}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${params.snippet.title}</h5>
+              <p>${params.snippet.channelTitle}</p>
+              <p class="card-text">${params.snippet.description}</p>
+              <a href="https://www.youtube.com/watch?v=${params.id.videoId}" class="card-link">Selengkapnya</a>
+            </div>
+          </div>
+        </div>  
+      ` 
+        console.log(params)
+      })
+      resolve(data);
+      document.getElementById("yt-id").innerHTML = viewHtml;
     })
     .catch(error);
+  });
 }
 
 function newsApi() {
+  return new Promise(function (resolve, reject) {
   if ('caches' in window) {
     caches.match(news).then(function (response) {
       if (response) {
         response.json().then(function (data) {
-          console.log(data)
+          var viewHtml = "";
+          data.articles.forEach(function (params) {
+            viewHtml +=`
+            
+              <div class="col mb-4">
+                <div class="card">
+                  <img src="${params.urlToImage}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">${params.title}</h5>
+                    <p>${params.source.name}</p>
+                    <p class="card-text">${params.description}</p>
+                    <a href="${params.url}" class="card-link">Baca Selengkapnya</a>
+                  </div>
+                </div>
+              </div>
+                
+            ` 
+            console.log(params);
+          })
+          resolve(data);
+          document.getElementById("news-id").innerHTML = viewHtml;
         });
       }
     });
@@ -519,9 +578,30 @@ function newsApi() {
     .then(status)
     .then(json)
     .then(function (data) {
-      console.log(data)
+      var viewHtml = "";
+      data.articles.forEach(function (params) {
+        viewHtml +=`       
+          <div class="col mb-4">
+            <div class="card">
+              <img src="${params.urlToImage}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${params.title}</h5>
+                <p>${params.source.name}</p>
+                <p class="card-text">${params.description}</p>
+                <a href="${params.url}" class="card-link">Baca Selengkapnya</a>
+              </div>
+            </div>
+          </div>
+            
+        ` 
+        console.log(params);
+      })
+      resolve(data);
+      document.getElementById("news-id").innerHTML = viewHtml;
+      // console.log(data)
     })
     .catch(error);
+  });
 }
 
 

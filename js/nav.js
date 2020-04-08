@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
   loadNav();
+  loadMenu();
 
   function loadNav() {
     var xhttp = new XMLHttpRequest();
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
           prov(); 
         }else if (page == "global") {
           covid();
-          // ytCorona();
+          ytCorona();
           // newsApi();
         }else if (page == "chartnav") {
           console.log("Berhasil");
@@ -68,6 +69,25 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     };
     xhttp.open("GET", "pages/" + page + ".html", true);
+    xhttp.send();
+  }
+
+
+
+
+  function loadMenu() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4) {
+        if (this.status != 200) return;
+  
+        // Muat daftar tautan menu
+        document.querySelectorAll(".media").forEach(function(elm) {
+          elm.innerHTML = xhttp.responseText;
+        });
+      }
+    };
+    xhttp.open("GET", "menu.html", true);
     xhttp.send();
   }
 });
@@ -107,5 +127,7 @@ function active(page) {
     document.getElementById("nasional").className ="nav__link";
     document.getElementById("home").className ="nav__link";
     document.getElementById("maps").className ="nav__link";
-  }  
+  }
+  
+//===============================================================================
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID19</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#182025"/>
+</head>
+<body>
+  
+  <!-- Navbat Top -->
+  <nav class="navbar" id="navbar-index">
+        <span class="navbar-brand toph1"><a href="javascript:goBack()" uk-icon="chevron-left" style="margin-right: 30px;"></a>News</span>
+  </nav>
+
+  <div class="container mt-2" id="body-content">
+    <h6 class="mt-3">Pertanyaan yang Sering Ditanyakan</h6>
+    <div class="col-md-12 mt-3">
+        <ul uk-accordion>
+            <li class="uk-open">
+                <a class="uk-accordion-title" href="#">Apa itu Novel Coronavirus (2019-nCoV)?</a>
+                <div class="uk-accordion-content">
+                    <p>Novel coronavirus (2019-nCoV) adalah jenis baru coronavirus yang belum pernah diidentifikasi sebelumnya pada manusia. Coronavirus merupakan keluarga besar virus yang menyebabkan penyakit pada manusia dan hewan. Pada manusia menyebabkan penyakit mulai flu biasa hingga penyakit yang serius seperti Middle East Respiratory Syndrome (MERS) dan Sindrom Pernapasan Akut Berat/ Severe Acute Respiratory Syndrome (SARS).
+                    <br/>
+                    Pada 11 Februari 2020, World Health Organization (WHO) mengumumkan nama penyakit yang disebabkan 2019-nCov, yaitu Coronavirus Disease (COVID-19).</p>
+                </div>
+            </li>
+            <li>
+                <a class="uk-accordion-title" href="#">Bagaimana cara mencegah penularan COVID-19?</a>
+                <div class="uk-accordion-content">
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
+                </div>
+            </li>
+            <li>
+                <a class="uk-accordion-title" href="#">Item 3</a>
+                <div class="uk-accordion-content">
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+  <br>
+  </div>
+
+
+<!-- javascipt & Jquery & js file -->
+<script src="js/jquery.js"></script>
+<script src="js/api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
+
+<script>
+  // REGISTER SERVICE WORKER
+  if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js')
+          .then(function() {
+              console.log('Pendaftaran ServiceWorker berhasil');
+          })
+          .catch(function(){
+              console.log('Pendaftaran ServiceWorker gagal');
+          });
+      })
+  } else {
+      console.log("ServiceWorker belum didukung browser ini.")
+  }
+
+    function goBack() {
+      window.history.back();
+    }
+    
+  </script>
+</body>
+</html>
