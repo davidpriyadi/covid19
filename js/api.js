@@ -5,7 +5,7 @@ const gbmeninggal = "https://api.kawalcorona.com/meninggal/";
 var prov_ina = "https://api.kawalcorona.com/indonesia/provinsi/";
 var chart = "https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/Statistik_Perkembangan_COVID19_Indonesia/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json";
 var maps ="https://opendata.arcgis.com/datasets/0c0f4558f1e548b68a1c82112744bad3_0.geojson";
-var news = "http://newsapi.org/v2/top-headlines?country=id&category=health&apiKey=46ecb833db2f4b9584a1dc370a8986a7";
+var news = "https://newsapi.org/v2/top-headlines?country=id&category=health&apiKey=46ecb833db2f4b9584a1dc370a8986a7";
 
 
 function status(response) {
@@ -218,7 +218,7 @@ function covid() {
                 <div class="card" id="card-global">
                     <div class="card-body" id="card-body-gb">
                         <div id="gb-tl-1">${data.value}</div>
-                        <span id="gb-tl-2" class="text-warning">Positif</span>
+                        <span id="gb-tl-2" >Positif</span>
                     </div>
                 </div>
               `;
@@ -241,7 +241,7 @@ function covid() {
         <div class="card" id="card-global">
             <div class="card-body" id="card-body-gb">
                 <div id="gb-tl-1">${data.value}</div>
-                <span id="gb-tl-2" class="text-warning">Positif</span>
+                <span id="gb-tl-2">Positif</span>
             </div>
         </div>
       `;
@@ -259,7 +259,7 @@ function covid() {
               // });
               var viewHtml  = "";
               viewHtml =`
-              <div id="gb-tl-n1" class="value-sm">${data.value}</div>
+              <div id="gb-tl-n1" class="value-mm">${data.value}</div>
               `;
               resolve(data);
               document.getElementById("value-sm").innerHTML = viewHtml;
@@ -276,7 +276,7 @@ function covid() {
       // });
       var viewHtml  = "";
       viewHtml =`
-      <div id="gb-tl-n1" class="value-sm">${data.value}</div>
+      <div id="gb-tl-n1" class="value-mm">${data.value}</div>
       `;
       resolve(data);
       document.getElementById("value-sm").innerHTML = viewHtml;
@@ -333,7 +333,7 @@ function covid() {
                                   <div class="card" id="card-global">
                                       <div class="card-body" id="card-body-gb">
                                           <div id="gb-tl-1">${params.positif}</div>
-                                          <span id="gb-tl-2" class="text-warning">Positif</span>
+                                          <span id="gb-tl-2">Positif</span>
                                       </div>
                                   </div>
                               </div>
@@ -342,16 +342,16 @@ function covid() {
                               <div class="col">
                                   <div class="card" id="card-global" style="width: 100%;">
                                       <div class="card-body" id="card-body-gb">
-                                          <div id="gb-tl-n1">${params.sembuh}</div>
-                                          <span id="gb-tl-n2" class="text-success">Sembuh</span>
+                                          <div id="gb-tl-n1" class="value-sm">${params.sembuh}</div>
+                                          <span id="gb-tl-n2">Sembuh</span>
                                       </div>
                                   </div>
                               </div>
                               <div class="col">
                                   <div class="card" id="card-global" style="width: 100%;">
                                       <div class="card-body" id="card-body-gb">
-                                          <div id="gb-tl-n1">${params.meninggal}</div>
-                                          <span id="gb-tl-n2" class="text-danger">Meninggal</span>
+                                          <div id="gb-tl-n1" class="value-mm">${params.meninggal}</div>
+                                          <span id="gb-tl-n2">Meninggal</span>
                                       </div>
                                   </div>
                               </div>
@@ -377,7 +377,7 @@ function covid() {
                     <div class="card" id="card-global">
                         <div class="card-body" id="card-body-gb">
                             <div id="gb-tl-1">${params.positif}</div>
-                            <span id="gb-tl-2" class="text-warning">Positif</span>
+                            <span id="gb-tl-2">Positif</span>
                         </div>
                     </div>
                 </div>
@@ -386,16 +386,16 @@ function covid() {
                 <div class="col">
                     <div class="card" id="card-global" style="width: 100%;">
                         <div class="card-body" id="card-body-gb">
-                            <div id="gb-tl-n1">${params.sembuh}</div>
-                            <span id="gb-tl-n2" class="text-success">Sembuh</span>
+                            <div id="gb-tl-n1" class="value-sm">${params.sembuh}</div>
+                            <span id="gb-tl-n2">Sembuh</span>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card" id="card-global" style="width: 100%;">
                         <div class="card-body" id="card-body-gb">
-                            <div id="gb-tl-n1">${params.meninggal}</div>
-                            <span id="gb-tl-n2" class="text-danger">Meninggal</span>
+                            <div id="gb-tl-n1" class="value-mm">${params.meninggal}</div>
+                            <span id="gb-tl-n2">Meninggal</span>
                         </div>
                     </div>
                 </div>

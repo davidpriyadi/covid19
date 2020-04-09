@@ -112,21 +112,27 @@ html{
     border-radius: 5px;
 }
 
-#card-body-gb{
+/* #card-body-gb{
     border-radius: 5px;
     background-color: #000A12;
-}
+} */
 #gb-tl-1{
     font-size: 45px;
+    color: #FFC107;
+    font-weight: bold;
 }
 #gb-tl-n1{
+    font-weight: bold;
     font-size: 30px;
 }
 #gb-tl-2{
     font-size: 15px;
+    font-weight: bold;
 }
 #gb-tl-n2{
     font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
 }
 
 
@@ -171,4 +177,14 @@ h3,h6,h5 {
     text-decoration: none;
     color: #ffffff;
     font-style: bold;
+}
+
+.value-sm{
+    color: #28A745;
+    font-weight: bold;
+}
+
+.value-mm{
+    color: #DC3545;
+    font-weight: bold;
 }
