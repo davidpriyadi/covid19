@@ -104,7 +104,7 @@ workbox.precaching.precacheAndRoute([{
   revision: '1'
 },
 {
-  url: '/img/virus.svg',
+  url: '/img/flu.svg',
   revision: '1'
 },
 {
@@ -113,6 +113,14 @@ workbox.precaching.precacheAndRoute([{
 },
 {
   url: '/img/virus.png',
+  revision: '1'
+},
+{
+  url: '/img/192.png',
+  revision: '1'
+},
+{
+  url: '/img/512.png',
   revision: '1'
 }
 ]);
