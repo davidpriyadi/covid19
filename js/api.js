@@ -5,7 +5,7 @@ const gbmeninggal = "https://api.kawalcorona.com/meninggal/";
 var prov_ina = "https://api.kawalcorona.com/indonesia/provinsi/";
 var chart = "https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/Statistik_Perkembangan_COVID19_Indonesia/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json";
 var maps ="https://opendata.arcgis.com/datasets/0c0f4558f1e548b68a1c82112744bad3_0.geojson";
-var news = "https://newsapi.org/v2/top-headlines?country=id&category=health&apiKey=46ecb833db2f4b9584a1dc370a8986a7";
+var news = "http://newsapi.org/v2/top-headlines?country=id&category=health&apiKey=46ecb833db2f4b9584a1dc370a8986a7";
 
 
 function status(response) {
@@ -328,34 +328,18 @@ function covid() {
                 data.forEach(function (params) {
                     console.log(params.name);
                               liveDataCV19 = `
-                          <div class="row text-center">
-                              <div class="col col-md-12 mt-1">
-                                  <div class="card" id="card-global">
-                                      <div class="card-body" id="card-body-gb">
-                                          <div id="gb-tl-1">${params.positif}</div>
-                                          <span id="gb-tl-2">Positif</span>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="row text-center">
-                              <div class="col">
-                                  <div class="card" id="card-global" style="width: 100%;">
-                                      <div class="card-body" id="card-body-gb">
-                                          <div id="gb-tl-n1" class="value-sm">${params.sembuh}</div>
-                                          <span id="gb-tl-n2">Sembuh</span>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col">
-                                  <div class="card" id="card-global" style="width: 100%;">
-                                      <div class="card-body" id="card-body-gb">
-                                          <div id="gb-tl-n1" class="value-mm">${params.meninggal}</div>
-                                          <span id="gb-tl-n2">Meninggal</span>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                     <div class="col">
+                              <h3 id="gb-tl-n1" class="text-warning">${params.positif}</h3>
+                              <span id="gb-tl-n2">Positif</span>  
+                      </div>
+                      <div class="col">
+                          <h3 id="gb-tl-n1" class="text-danger">${params.meninggal}</h3>
+                          <span id="gb-tl-n2">Meninggal</span>  
+                      </div>
+                      <div class="col">
+                          <h3 id="gb-tl-n1" class="text-success">${params.sembuh}</h3>
+                          <span id="gb-tl-n2">Sembuh</span>  
+                      </div>
                               `;
                 });
                 resolve(data);
@@ -372,34 +356,18 @@ function covid() {
         data.forEach(function (params) {  
             console.log(params.name);
             liveDataCV19 = `
-            <div class="row text-center">
-                <div class="col col-md-12 mt-1">
-                    <div class="card" id="card-global">
-                        <div class="card-body" id="card-body-gb">
-                            <div id="gb-tl-1">${params.positif}</div>
-                            <span id="gb-tl-2">Positif</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col">
-                    <div class="card" id="card-global" style="width: 100%;">
-                        <div class="card-body" id="card-body-gb">
-                            <div id="gb-tl-n1" class="value-sm">${params.sembuh}</div>
-                            <span id="gb-tl-n2">Sembuh</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" id="card-global" style="width: 100%;">
-                        <div class="card-body" id="card-body-gb">
-                            <div id="gb-tl-n1" class="value-mm">${params.meninggal}</div>
-                            <span id="gb-tl-n2">Meninggal</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                  <div class="col">
+                    <h3 id="gb-tl-n1" class="text-warning">${params.positif}</h3>
+                    <span id="gb-tl-n2">Positif</span>  
+                  </div>
+                  <div class="col">
+                    <h3 id="gb-tl-n1" class="text-danger">${params.meninggal}</h3>
+                    <span id="gb-tl-n2">Meninggal</span>  
+                  </div>
+                    <div class="col">
+                    <h3 id="gb-tl-n1" class="text-success">${params.sembuh}</h3>
+                    <span id="gb-tl-n2">Sembuh</span>  
+                  </div>
                 `;
         });
         resolve(data);
@@ -482,7 +450,7 @@ function chartCovid() {
 // AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo youtube
 
 //================================== API YOUTUBE ===================================================
-const yt = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo&order=viewCount&type=video&maxResults=10&q=edukasi corona&part=snippet";
+const yt = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo&order=viewCount&type=video&maxResults=10&q=berita corona indonesia&part=snippet";
 
 function ytCorona() {
   return new Promise(function (resolve, reject) {
@@ -543,9 +511,10 @@ function ytCorona() {
 }
 
 function newsApi() {
+  var url = news.replace(/^http:\/\//i, 'https://');
   return new Promise(function (resolve, reject) {
   if ('caches' in window) {
-    caches.match(news).then(function (response) {
+    caches.match(url).then(function (response) {
       if (response) {
         response.json().then(function (data) {
           var viewHtml = "";
@@ -573,8 +542,7 @@ function newsApi() {
       }
     });
   }
-
-  fetch(news)
+  fetch(url)
     .then(status)
     .then(json)
     .then(function (data) {
@@ -595,6 +563,7 @@ function newsApi() {
             
         ` 
         console.log(params);
+        resolve(params)
       })
       resolve(data);
       document.getElementById("news-id").innerHTML = viewHtml;
@@ -604,4 +573,61 @@ function newsApi() {
   });
 }
 
+//card yt
+function cardCorona() {
+  return new Promise(function (resolve, reject) {
+  if ('caches' in window) {
+    caches.match(yt).then(function (response) {
+      if (response) {
+        response.json().then(function (data) {
+          var viewHtml = ""
+          data.items.forEach(function (params) {
+            viewHtml +=`       
+            <li>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <img src="${params.snippet.thumbnails.high.url}" alt="">
+                    </div>
+                    <div class="uk-card-body">
+                        <p>${params.snippet.title}</p>
+                    </div>
+                </div>
+            </li>
+          ` 
+            console.log(params)
+          })
+          resolve(data);
+          document.getElementById("vterkini").innerHTML = viewHtml;
+        });
+      }
+    });
+  }
 
+  fetch(yt)
+    .then(status)
+    .then(json)
+    .then(function (data) {
+      var viewHtml = ""
+      data.items.forEach(function (params) {
+        viewHtml +=` 
+            <li>
+            <a href="https://www.youtube.com/watch?v=${params.id.videoId}" >
+                <div class="uk-card uk-card-default uk-border-rounded">
+                    <div class="uk-card-media-top uk-border-rounded">
+                        <img src="${params.snippet.thumbnails.high.url}" alt="">
+                    </div>
+                    <div class="uk-card-body">
+                        <p class="text-white">${params.snippet.title}</p>
+                    </div>
+                </div>
+              </a>
+            </li>
+      ` 
+        console.log(params)
+      })
+      resolve(data);
+      document.getElementById("vterkini").innerHTML = viewHtml;
+    })
+    .catch(error);
+  });
+}

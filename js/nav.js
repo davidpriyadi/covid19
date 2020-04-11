@@ -46,7 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
         var content = document.querySelector("#content-body");
         if (page === "home") {
           covid_ina();
-          globalliveCv19();
+          // globalliveCv19(); 
+          cardCorona();
+          // carosel();
         } else if (page === "nasional") {
           prov(); 
         }else if (page == "global") {
@@ -61,6 +63,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if (this.status == 200) {
           content.innerHTML = xhttp.responseText;
+          // if (page =="home") {
+          //   cardCorona()
+          //   // carosel();
+          // }
         } else if (this.status == 404) {
           content.innerHTML = "<p>Halaman tidak ditemukan.</p>";
         } else {
@@ -71,9 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
     xhttp.open("GET", "pages/" + page + ".html", true);
     xhttp.send();
   }
-
-
-
 
   function loadMenu() {
     var xhttp = new XMLHttpRequest();
@@ -92,6 +95,26 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+
+// carousel js
+function carosel(){
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+  }) 
+}
 
 
 
@@ -130,4 +153,5 @@ function active(page) {
   }
   
 //===============================================================================
+
 }

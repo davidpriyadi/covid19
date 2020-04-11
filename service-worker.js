@@ -72,7 +72,19 @@ workbox.precaching.precacheAndRoute([{
   revision: '1'
 },
 {
+  url: '/css/owl.carousel.min.css',
+  revision: '1'
+},
+{
+  url: '/css/owl.theme.default.min.css',
+  revision: '1'
+},
+{
   url: '/js/nav.js',
+  revision: '1'
+},
+{
+  url: '/js/owl.carousel.js',
   revision: '1'
 },
 {
@@ -121,6 +133,10 @@ workbox.precaching.precacheAndRoute([{
 },
 {
   url: '/img/512.png',
+  revision: '1'
+},
+{
+  url: '/img/bg.svg',
   revision: '1'
 }
 ]);
@@ -192,6 +208,10 @@ workbox.routing.registerRoute(
   workbox.strategies.staleWhileRevalidate()
 )
 
+workbox.routing.registerRoute(
+  new RegExp('https://newsapi.org/v2/top-headlines?country=id&category=health&apiKey=46ecb833db2f4b9584a1dc370a8986a7/'),
+  workbox.strategies.staleWhileRevalidate()
+)
 workbox.routing.registerRoute(
   new RegExp('https://www.googleapis.com/youtube/v3/search?key=AIzaSyAKA06eqVlySx2Q4W-iGAAArBp1lIv-uqo&order=viewCount&type=video&maxResults=10&q=edukasi corona&part=snippet'),
   workbox.strategies.staleWhileRevalidate()

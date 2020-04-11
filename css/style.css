@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 body {
     margin: 0 0 55px 0;
     background-color:#000A12;
@@ -168,7 +168,7 @@ html{
     background-color: #2E343B;
 }
 
-h3,h6,h5 {
+h3,h6,h5,h4 {
     color: #ffffff;
     font-style: normal;
 }
@@ -187,4 +187,65 @@ h3,h6,h5 {
 .value-mm{
     color: #DC3545;
     font-weight: bold;
+}
+
+.jumbotron {
+    background-size: cover;
+    height: 222px;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+    background-color: #263238;
+}
+
+/* Info Panel */
+.info-panel {
+    background-color: #263238;
+    padding: 30px;
+    margin-top: -120px;
+    border-radius: 12px;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.6);
+}
+
+.info-panel h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.info-panel p {
+    font-size: 14px;
+    font-weight: lighter;
+    color: #acacac;
+}
+
+.prov-panel{
+    background-color: #263238;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    padding: 15px;
+}
+#tbl-prov{
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.tbl-head{
+    color: #F8F8F8;
+}
+
+.gmbr img{
+    width: 40%;
+}
+
+/* .item{
+    background-color: aqua;
+    height: 100px;
+    height: 50px;
+} */
+
+.material-icons.nav-ic{
+    color: #ffffff;
+    font-size: 29px;
 }
