@@ -24,7 +24,7 @@ workbox.precaching.precacheAndRoute([{
   revision: '1'
 },
 {
-  url: '/menu.html',
+  url: '/detail.html',
   revision: '1'
 },
 {
@@ -37,10 +37,6 @@ workbox.precaching.precacheAndRoute([{
 },
 {
   url: '/manifest.json',
-  revision: '1'
-},
-{
-  url: '/icon.png',
   revision: '1'
 },
 {
