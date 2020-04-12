@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
   loadNav();
-  loadMenu();
+  // loadMenu();
 
   function loadNav() {
     var xhttp = new XMLHttpRequest();

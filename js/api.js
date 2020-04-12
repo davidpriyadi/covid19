@@ -623,7 +623,7 @@ function cardCorona() {
               </a>
             </li>
       ` 
-        console.log(params)
+        // console.log(params)
       })
       resolve(data);
       document.getElementById("vterkini").innerHTML = viewHtml;

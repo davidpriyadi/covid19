@@ -134,6 +134,66 @@ workbox.precaching.precacheAndRoute([{
 {
   url: '/img/bg.svg',
   revision: '1'
+},
+{
+  url: '/ico/android-icon-192x192.png',
+  revision: '1'
+},
+{
+  url: '/ico/apple-icon-57x57.png',
+  revision: '1'
+},
+{
+  url: '/ico/apple-icon-60x60.png',
+  revision: '1'
+},
+{
+  url: '/ico/apple-icon-72x72.png',
+  revision: '1'
+},
+{
+  url: '/ico/apple-icon-76x76.png',
+  revision: '1'
+},
+{
+  url: '/ico/apple-icon-114x114.png',
+  revision: '1'
+},
+{
+  url: '/ico/apple-icon-120x120.png',
+  revision: '1'
+},
+{
+  url: '/ico/apple-icon-144x144.png',
+  revision: '1'
+},
+{
+  url: '/ico/apple-icon-152x152.png',
+  revision: '1'
+},
+{
+  url: '/ico/apple-icon-180x180.png',
+  revision: '1'
+},
+{
+  url: '/ico/favicon-32x32.png',
+  revision: '1'
+},
+{
+  url: '/ico/favicon-96x96.png',
+  revision: '1'
+},
+{
+  url: '/ico/favicon-16x16.png',
+  revision: '1'
+},
+{
+  url: '/ico/favicon.ico',
+  revision: '1'
+},
+{
+  url: '/ico/ms-icon-144x144.png',
+  revision: '1'
 }
 ]);
 
